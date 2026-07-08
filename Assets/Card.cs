@@ -8,6 +8,7 @@ public class Card : MonoBehaviour
     private float xLocation;
     private float yLocation;
     public Sprite newSprite;
+    public Sprite openCard;
     public string cardValue;
     public string cardSuit;
 
@@ -27,6 +28,8 @@ public class Card : MonoBehaviour
     {
         xLocation = Camera.main.WorldToScreenPoint(transform.localPosition).x;
         yLocation = Camera.main.WorldToScreenPoint(transform.localPosition).y;
+
+        cardStateChecker();
 
         if (Input.GetMouseButtonUp(0) & beingHeld)
         {
@@ -114,5 +117,18 @@ public class Card : MonoBehaviour
         }
         cardSuit = Deck.randomDeck[21 - Deck.cardCount].Substring(1);
         //Debug.Log("I'm a(n) " + cardValue + " of " + cardSuit);
+    }
+
+    public void cardStateChecker()
+    {
+        if (gameObject.GetComponent<SpriteRenderer>().sprite.Equals(openCard))
+        {
+            // Debug.Log("I'm face side up!");
+            
+        }
+        else
+        {
+            //Debug.Log("I'm not face side up!");
+        }
     }
 }
