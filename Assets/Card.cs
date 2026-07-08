@@ -92,6 +92,16 @@ public class Card : MonoBehaviour
         return yLocation;
     }
 
+    public string getCardValue()
+    {
+        return cardValue;
+    }
+
+    public string getCardSuit()
+    {
+        return cardSuit;
+    }
+
     public bool checkCollision()
     {
         return Input.mousePosition.x > (getX() - (getWidth() / 2)) & Input.mousePosition.x < (getX() + (getWidth() / 2)) & Input.mousePosition.y > (getY() - (getHeight() / 2)) & Input.mousePosition.y < (getY() + (getHeight() / 2));
