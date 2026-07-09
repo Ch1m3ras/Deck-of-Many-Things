@@ -11,6 +11,13 @@ public class Card : MonoBehaviour
     public Sprite openCard;
     public string cardValue;
     public string cardSuit;
+    public bool isFlipped;
+    public GameObject suitPrefab;
+    public GameObject valuePrefab;
+    public GameObject cardArtPrefab;
+    public GameObject suitObject;
+    public GameObject valueObject;
+    public GameObject cardArtObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,8 +35,6 @@ public class Card : MonoBehaviour
     {
         xLocation = Camera.main.WorldToScreenPoint(transform.localPosition).x;
         yLocation = Camera.main.WorldToScreenPoint(transform.localPosition).y;
-
-        cardStateChecker();
 
         if (Input.GetMouseButtonUp(0) & beingHeld)
         {
@@ -49,6 +54,7 @@ public class Card : MonoBehaviour
         if(checkCollision() & Input.GetKeyUp("f"))
         {
             changeSprite();
+            cardAssetManager();
         }
     }
 
@@ -126,18 +132,28 @@ public class Card : MonoBehaviour
             cardValue = Deck.randomDeck[21 - Deck.cardCount].Substring(0,1);
         }
         cardSuit = Deck.randomDeck[21 - Deck.cardCount].Substring(1);
-        //Debug.Log("I'm a(n) " + cardValue + " of " + cardSuit);
+        Debug.Log("I'm a(n) " + cardValue + " of " + cardSuit);
+        isFlipped = false;
     }
 
-    public void cardStateChecker()
+    public void cardAssetManager()
     {
         if (gameObject.GetComponent<SpriteRenderer>().sprite.Equals(openCard))
         {
+            isFlipped = true;
+            suitObject = Instantiate(suitPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            Suit.creator = this.gameObject;
+            valueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
+            cardArtObject = Instantiate(suitPrefab, new Vector3(-1, -1, 0), Quaternion.identity);
             // Debug.Log("I'm face side up!");
             
         }
         else
         {
+            isFlipped = false;
+            suitObject.DestroyGameObject();
+            valueObject.DestroyGameObject();
+            cardArtObject.DestroyGameObject();
             //Debug.Log("I'm not face side up!");
         }
     }

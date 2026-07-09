@@ -15,4 +15,9 @@ public class CardArt : MonoBehaviour
     {
         
     }
+
+    // void DestroyGameObject()
+    // {
+    //     Destroy(gameObject);
+    // }
 }

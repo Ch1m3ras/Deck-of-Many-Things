@@ -15,4 +15,9 @@ public class Suit : MonoBehaviour
     {
         
     }
+
+    public destroySelf()
+    {
+        
+    }
 }
