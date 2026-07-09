@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    private bool beingHeld;
+    public bool beingHeld;
     private double width;
     private double height;
     private float xLocation;
@@ -11,11 +11,11 @@ public class Card : MonoBehaviour
     public Sprite openCard;
     public string cardValue;
     public string cardSuit;
-    public bool isFlipped;
     public GameObject suitPrefab;
     public GameObject valuePrefab;
     public GameObject cardArtPrefab;
-    public GameObject suitObject;
+    public GameObject bottomSuitObject;
+    public GameObject topSuitObject;
     public GameObject valueObject;
     public GameObject cardArtObject;
 
@@ -133,27 +133,35 @@ public class Card : MonoBehaviour
         }
         cardSuit = Deck.randomDeck[21 - Deck.cardCount].Substring(1);
         Debug.Log("I'm a(n) " + cardValue + " of " + cardSuit);
-        isFlipped = false;
     }
 
     public void cardAssetManager()
     {
         if (gameObject.GetComponent<SpriteRenderer>().sprite.Equals(openCard))
         {
-            isFlipped = true;
-            suitObject = Instantiate(suitPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            Suit.creator = this.gameObject;
+            bottomSuitObject = Instantiate(suitPrefab, new Vector3(0, -1, 0), Quaternion.identity);
+            bottomSuitObject.GetComponent<Suit>().creator = gameObject;
+            bottomSuitObject.GetComponent<Suit>().isTop = false;
+
+            topSuitObject = Instantiate(suitPrefab, new Vector3(0, 1, 0), Quaternion.identity);
+            topSuitObject.GetComponent<Suit>().creator = gameObject;
+            topSuitObject.GetComponent<Suit>().isTop = true;
+
             valueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
-            cardArtObject = Instantiate(suitPrefab, new Vector3(-1, -1, 0), Quaternion.identity);
+            valueObject.GetComponent<Value>().creator = gameObject;
+
+            cardArtObject = Instantiate(cardArtPrefab, new Vector3(-1, -1, 0), Quaternion.identity);
+            cardArtObject.GetComponent<CardArt>().creator = gameObject;
+
             // Debug.Log("I'm face side up!");
             
         }
         else
         {
-            isFlipped = false;
-            suitObject.DestroyGameObject();
-            valueObject.DestroyGameObject();
-            cardArtObject.DestroyGameObject();
+            Destroy(bottomSuitObject);
+            Destroy(topSuitObject);
+            Destroy(valueObject);
+            Destroy(cardArtObject);
             //Debug.Log("I'm not face side up!");
         }
     }

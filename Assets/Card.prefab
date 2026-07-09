@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4296519791367713074}
   m_Layer: 0
   m_Name: Card
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1558639803
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4457850898058260020, guid: cf2c8834a2b1fd945b054043e574fa8c, type: 3}
@@ -105,11 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c64355197487942a88a239f5f38aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  beingHeld: 0
   newSprite: {fileID: 6008755849024553855, guid: f1aeb376b7b47184e9195b83c6b89b23, type: 3}
   openCard: {fileID: 6008755849024553855, guid: f1aeb376b7b47184e9195b83c6b89b23, type: 3}
   cardValue: 
   cardSuit: 
-  isFlipped: 0
   suitPrefab: {fileID: 7392922513352232922, guid: 11f3628d857b3de4f859a0c0d35bde49, type: 3}
   valuePrefab: {fileID: 5616209281255893266, guid: ddb1663365d04e0498fcc55ab0757766, type: 3}
   cardArtPrefab: {fileID: 2083235347979358020, guid: dec38eb6386f25b4690edcdedf5f7ce2, type: 3}
+  bottomSuitObject: {fileID: 0}
+  topSuitObject: {fileID: 0}
+  valueObject: {fileID: 0}
+  cardArtObject: {fileID: 0}

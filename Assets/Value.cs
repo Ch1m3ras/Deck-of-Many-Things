@@ -15,9 +15,4 @@ public class Value : MonoBehaviour
     {
         
     }
-
-    // void DestroyGameObject()
-    // {
-    //     Destroy(gameObject);
-    // }
 }
