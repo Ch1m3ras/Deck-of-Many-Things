@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Suit : MonoBehaviour
 {
-    public GameObject creator;
-    public string suit;
-    public bool isTop = false;
+    private GameObject creator;
+    private string suit;
+    private bool isTop = false;
 
     public Sprite spadeSprite;
     public Sprite heartSprite;
@@ -14,7 +14,6 @@ public class Suit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        suit = creator.GetComponent<Card>().cardSuit;
         spriteStuff();
         // Debug.Log(suit);
     }
@@ -34,6 +33,35 @@ public class Suit : MonoBehaviour
                 transform.position = new Vector3(mouseVector.x + (float)1.7, mouseVector.y - (float)1.67, -1);
             }
         }
+    }
+
+    public GameObject getCreator()
+    {
+        return creator;
+    }
+    public void setCreator(GameObject creatorInput)
+    {
+        creator = creatorInput;
+    }
+    
+    public string getSuit()
+    {
+        return suit;
+    }
+
+    public void setSuit(string suitInput)
+    {
+        suit = suitInput;
+    }
+
+    public bool getIsTop()
+    {
+        return isTop;
+    } 
+
+    public void setIsTop(bool inputTop)
+    {
+        isTop = inputTop;
     }
 
     void spriteStuff()
@@ -64,5 +92,4 @@ public class Suit : MonoBehaviour
         }
 
     }
-
 }

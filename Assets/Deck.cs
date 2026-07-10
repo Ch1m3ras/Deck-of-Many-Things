@@ -87,6 +87,11 @@ public class Deck : MonoBehaviour
         return xLocation;
     }
 
+    public float getTrueX()
+    {
+        return trueXLocation;    
+    }
+
     public float getY()
     {
         return yLocation;
@@ -95,6 +100,11 @@ public class Deck : MonoBehaviour
     {
         yLocation = changedY;
         return yLocation;
+    }
+
+    public float getTrueY()
+    {
+        return trueYLocation;
     }
 
     public bool checkCollision()
@@ -146,5 +156,20 @@ public class Deck : MonoBehaviour
         //     outputString = outputString + " " + randomDeck[num];
         // }
         // Debug.Log(outputString);
+    }
+
+    public int getCardCount()
+    {
+        return cardCount;
+    }
+
+    public string[] getSortedDeck()
+    {
+        return sortedDeck;
+    }
+    
+    public string[] getRandomDeck()
+    {
+        return randomDeck;
     }
 }

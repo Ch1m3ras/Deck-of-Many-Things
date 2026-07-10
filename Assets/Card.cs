@@ -16,10 +16,10 @@ public class Card : MonoBehaviour
     public GameObject suitPrefab;
     public GameObject valuePrefab;
     public GameObject cardArtPrefab;
-    public GameObject bottomSuitObject;
-    public GameObject topSuitObject;
-    public GameObject valueObject;
-    public GameObject cardArtObject;
+    private GameObject bottomSuitObject;
+    private GameObject topSuitObject;
+    private GameObject valueObject;
+    private GameObject cardArtObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,6 +100,11 @@ public class Card : MonoBehaviour
         return xLocation;
     }
 
+    public float getTrueX()
+    {
+        return trueXLocation;    
+    }
+
     public float getY()
     {
         return yLocation;
@@ -108,6 +113,11 @@ public class Card : MonoBehaviour
     {
         yLocation = changedY;
         return yLocation;
+    }
+
+    public float getTrueY()
+    {
+        return trueYLocation;
     }
 
     public string getCardValue()
@@ -152,12 +162,14 @@ public class Card : MonoBehaviour
         if (gameObject.GetComponent<SpriteRenderer>().sprite.Equals(openCard))
         {
             bottomSuitObject = Instantiate(suitPrefab, new Vector3(trueXLocation + (float)1.7, trueYLocation - (float)1.67, (float)-1), Quaternion.identity);
-            bottomSuitObject.GetComponent<Suit>().creator = gameObject;
-            bottomSuitObject.GetComponent<Suit>().isTop = false;
+            bottomSuitObject.GetComponent<Suit>().setCreator(gameObject);
+            bottomSuitObject.GetComponent<Suit>().setIsTop(false);
+            bottomSuitObject.GetComponent<Suit>().setSuit(cardSuit);
 
             topSuitObject = Instantiate(suitPrefab, new Vector3(trueXLocation - (float)1.7, trueYLocation + (float)1.67, (float)-1), Quaternion.identity);
-            topSuitObject.GetComponent<Suit>().creator = gameObject;
-            topSuitObject.GetComponent<Suit>().isTop = true;
+            topSuitObject.GetComponent<Suit>().setCreator(gameObject);
+            topSuitObject.GetComponent<Suit>().setIsTop(true);
+            topSuitObject.GetComponent<Suit>().setSuit(cardSuit);
 
             valueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
             valueObject.GetComponent<Value>().creator = gameObject;
