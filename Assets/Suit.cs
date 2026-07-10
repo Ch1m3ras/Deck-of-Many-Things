@@ -16,13 +16,24 @@ public class Suit : MonoBehaviour
     {
         suit = creator.GetComponent<Card>().cardSuit;
         spriteStuff();
-        //Debug.Log(suit);
+        // Debug.Log(suit);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (creator.GetComponent<Card>().beingHeld)
+        {
+            Vector2 mouseVector = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (isTop)
+            {
+                transform.position = new Vector3(mouseVector.x - (float)1.7, mouseVector.y + (float)1.67, -1);
+            }
+            else
+            {
+                transform.position = new Vector3(mouseVector.x + (float)1.7, mouseVector.y - (float)1.67, -1);
+            }
+        }
     }
 
     void spriteStuff()

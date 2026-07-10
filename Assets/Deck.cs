@@ -7,6 +7,8 @@ public class Deck : MonoBehaviour
     private double height;
     private float xLocation;
     private float yLocation;
+    private float trueXLocation;
+    private float trueYLocation;
     public GameObject cardPrefab;
     public static int cardCount;
     public static string[] sortedDeck;
@@ -25,6 +27,12 @@ public class Deck : MonoBehaviour
         // Debug.Log("Height: " + height);
         // Debug.Log("X Location: " + xLocation);
         // Debug.Log("Y Location: " + yLocation);
+
+        trueXLocation = transform.position.x;
+        trueYLocation = transform.position.y;
+
+        // Debug.Log(trueXLocation);
+        // Debug.Log(trueYLocation);
     }
 
     // Update is called once per frame

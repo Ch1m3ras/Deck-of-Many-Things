@@ -7,6 +7,8 @@ public class Card : MonoBehaviour
     private double height;
     private float xLocation;
     private float yLocation;
+    private float trueXLocation;
+    private float trueYLocation;
     public Sprite newSprite;
     public Sprite openCard;
     public string cardValue;
@@ -27,7 +29,12 @@ public class Card : MonoBehaviour
         height = 350 * 2.3;
         xLocation = Camera.main.WorldToScreenPoint(transform.localPosition).x;
         yLocation = Camera.main.WorldToScreenPoint(transform.localPosition).y;
+        trueXLocation = transform.position.x;
+        trueYLocation = transform.position.y;
         beingHeld = true;
+
+        // Debug.Log(trueXLocation);
+        // Debug.Log(trueYLocation);
     }
 
     // Update is called once per frame
@@ -35,6 +42,11 @@ public class Card : MonoBehaviour
     {
         xLocation = Camera.main.WorldToScreenPoint(transform.localPosition).x;
         yLocation = Camera.main.WorldToScreenPoint(transform.localPosition).y;
+
+        trueXLocation = transform.position.x;
+        trueYLocation = transform.position.y;
+        //Debug.Log(trueXLocation);
+        //  Debug.Log(trueYLocation);
 
         if (Input.GetMouseButtonUp(0) & beingHeld)
         {
@@ -139,11 +151,11 @@ public class Card : MonoBehaviour
     {
         if (gameObject.GetComponent<SpriteRenderer>().sprite.Equals(openCard))
         {
-            bottomSuitObject = Instantiate(suitPrefab, new Vector3(0, -1, 0), Quaternion.identity);
+            bottomSuitObject = Instantiate(suitPrefab, new Vector3(trueXLocation + (float)1.7, trueYLocation - (float)1.67, (float)-1), Quaternion.identity);
             bottomSuitObject.GetComponent<Suit>().creator = gameObject;
             bottomSuitObject.GetComponent<Suit>().isTop = false;
 
-            topSuitObject = Instantiate(suitPrefab, new Vector3(0, 1, 0), Quaternion.identity);
+            topSuitObject = Instantiate(suitPrefab, new Vector3(trueXLocation - (float)1.7, trueYLocation + (float)1.67, (float)-1), Quaternion.identity);
             topSuitObject.GetComponent<Suit>().creator = gameObject;
             topSuitObject.GetComponent<Suit>().isTop = true;
 
