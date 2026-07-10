@@ -158,17 +158,17 @@ public class Deck : MonoBehaviour
         // Debug.Log(outputString);
     }
 
-    public int getCardCount()
+    public static int getCardCount()
     {
         return cardCount;
     }
 
-    public string[] getSortedDeck()
+    public static string[] getSortedDeck()
     {
         return sortedDeck;
     }
     
-    public string[] getRandomDeck()
+    public static string[] getRandomDeck()
     {
         return randomDeck;
     }
