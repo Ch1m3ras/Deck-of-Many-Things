@@ -177,12 +177,12 @@ public class Card : MonoBehaviour
             topSuitObject.GetComponent<Suit>().setIsTop(true);
             topSuitObject.GetComponent<Suit>().setSuit(cardSuit);
 
-            bottomValueObject = Instantiate(valuePrefab, new Vector3(-1, -1, 0), Quaternion.identity);
+            bottomValueObject = Instantiate(valuePrefab, new Vector3(trueXLocation + (float)1.7, trueYLocation - (float)2.35, -1), Quaternion.identity);
             bottomValueObject.GetComponent<Value>().setCreator(gameObject);
             bottomValueObject.GetComponent<Value>().setIsTop(false);
             bottomValueObject.GetComponent<Value>().setValue(cardValue);
 
-            topValueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
+            topValueObject = Instantiate(valuePrefab, new Vector3(trueXLocation - (float)1.7, trueYLocation + (float)2.35, -1), Quaternion.identity);
             topValueObject.GetComponent<Value>().setCreator(gameObject);
             topValueObject.GetComponent<Value>().setIsTop(true);
             topValueObject.GetComponent<Value>().setValue(cardValue);
