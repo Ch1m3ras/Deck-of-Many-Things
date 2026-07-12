@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Value : MonoBehaviour
 {
-    public GameObject creator;
+    private GameObject creator;
     private string value;
     private bool isTop = false;
 

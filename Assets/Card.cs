@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public bool beingHeld;
+    private bool beingHeld;
     private double width;
     private double height;
     private float xLocation;
@@ -11,8 +11,8 @@ public class Card : MonoBehaviour
     private float trueYLocation;
     public Sprite newSprite;
     public Sprite openCard;
-    public string cardValue;
-    public string cardSuit;
+    private string cardValue;
+    private string cardSuit;
     public GameObject suitPrefab;
     public GameObject valuePrefab;
     public GameObject cardArtPrefab;
@@ -71,6 +71,11 @@ public class Card : MonoBehaviour
         }
     }
 
+    public bool isHeld()
+    {
+        return beingHeld;
+    }
+    
     public double getWidth()
     {
         return width;

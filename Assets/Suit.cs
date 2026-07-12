@@ -21,7 +21,7 @@ public class Suit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (creator.GetComponent<Card>().beingHeld)
+        if (creator.GetComponent<Card>().isHeld())
         {
             Vector2 mouseVector = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (isTop)
