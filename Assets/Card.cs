@@ -18,7 +18,8 @@ public class Card : MonoBehaviour
     public GameObject cardArtPrefab;
     private GameObject bottomSuitObject;
     private GameObject topSuitObject;
-    private GameObject valueObject;
+    private GameObject topValueObject;
+    private GameObject bottomValueObject;
     private GameObject cardArtObject;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -171,8 +172,15 @@ public class Card : MonoBehaviour
             topSuitObject.GetComponent<Suit>().setIsTop(true);
             topSuitObject.GetComponent<Suit>().setSuit(cardSuit);
 
-            valueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
-            valueObject.GetComponent<Value>().creator = gameObject;
+            bottomValueObject = Instantiate(valuePrefab, new Vector3(-1, -1, 0), Quaternion.identity);
+            bottomValueObject.GetComponent<Value>().setCreator(gameObject);
+            bottomValueObject.GetComponent<Value>().setIsTop(false);
+            bottomValueObject.GetComponent<Value>().setValue(cardValue);
+
+            topValueObject = Instantiate(valuePrefab, new Vector3(1, 1, 0), Quaternion.identity);
+            topValueObject.GetComponent<Value>().setCreator(gameObject);
+            topValueObject.GetComponent<Value>().setIsTop(true);
+            topValueObject.GetComponent<Value>().setValue(cardValue);
 
             cardArtObject = Instantiate(cardArtPrefab, new Vector3(-1, -1, 0), Quaternion.identity);
             cardArtObject.GetComponent<CardArt>().creator = gameObject;
@@ -184,7 +192,8 @@ public class Card : MonoBehaviour
         {
             Destroy(bottomSuitObject);
             Destroy(topSuitObject);
-            Destroy(valueObject);
+            Destroy(topValueObject);
+            Destroy(bottomValueObject);
             Destroy(cardArtObject);
             //Debug.Log("I'm not face side up!");
         }
