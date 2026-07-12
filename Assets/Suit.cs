@@ -79,7 +79,7 @@ public class Suit : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = heartSprite;
         }
-        else
+        else if(suit.Equals("Diamonds"))
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = diamondSprite;
         }
