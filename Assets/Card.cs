@@ -2,17 +2,23 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    private bool beingHeld;
+    
+    //Card details for movement and placement
     private double width;
     private double height;
     private float xLocation;
     private float yLocation;
     private float trueXLocation;
     private float trueYLocation;
-    public Sprite newSprite;
-    public Sprite openCard;
+    private bool beingHeld;
+
+    //Card Initialization and for card details. 
     private string cardValue;
     private string cardSuit;
+
+    //Art for the base card
+    public Sprite newSprite;
+    public Sprite openCard;
     public GameObject suitPrefab;
     public GameObject valuePrefab;
     public GameObject cardArtPrefab;
@@ -187,8 +193,10 @@ public class Card : MonoBehaviour
             topValueObject.GetComponent<Value>().setIsTop(true);
             topValueObject.GetComponent<Value>().setValue(cardValue);
 
-            cardArtObject = Instantiate(cardArtPrefab, new Vector3(-1, -1, 0), Quaternion.identity);
-            cardArtObject.GetComponent<CardArt>().creator = gameObject;
+            cardArtObject = Instantiate(cardArtPrefab, new Vector3(trueXLocation, trueYLocation, -1), Quaternion.identity);
+            cardArtObject.GetComponent<CardArt>().setCreator(gameObject);
+            cardArtObject.GetComponent<CardArt>().setValue(cardValue);
+            cardArtObject.GetComponent<CardArt>().setSuit(cardSuit);
 
             // Debug.Log("I'm face side up!");
             
