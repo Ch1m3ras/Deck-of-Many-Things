@@ -15,6 +15,10 @@ public class CardArt : MonoBehaviour
     public Sprite twoHeartsSprite;
     public Sprite twoSpadesSprite;
 
+    public Sprite kingSprite; 
+    public Sprite queenSprite;
+    public Sprite jackSprite;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -82,6 +86,18 @@ public class CardArt : MonoBehaviour
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = twoSpadesSprite;
             }
+        }
+        else if(value.Equals("K"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = kingSprite;
+        }
+        else if (value.Equals("Q"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = queenSprite;
+        }
+        else if (value.Equals("J"))
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = jackSprite;
         }
     }
 }
